@@ -93,7 +93,8 @@ class Timer(threading.Thread):
             self.running = False
 
     def ensure_started(self):
-        if not self.running and not self.isAlive():
+        # if not self.running and not self.isAlive():# for python <3.9
+        if not self.running and not self.is_alive():# for python =3.9
             if self.on_start:
                 self.on_start(self)
             self.start()
